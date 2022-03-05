@@ -1,12 +1,22 @@
-nav{
-    margin-bottom: 30px;
+
+body{
+background: url('http://4.bp.blogspot.com/-2-IKZdCXB3k/U8tzEPMi9AI/AAAAAAAAGck/ZrqcdWRLOIk/s1600/seamless-stone-like-background.jpg');
+
 }
 
 
+nav{
+    margin-bottom: 30px;
+    -webkit-box-shadow: 6px 9px 9px -7px rgba(0,0,0,0.31);
+    -moz-box-shadow: 6px 9px 9px -7px rgba(0,0,0,0.31);
+    box-shadow: 6px 9px 9px -7px rgba(0,0,0,0.31);
+}
+
 .card{
     -webkit-box-shadow: 6px 9px 9px -7px rgba(0,0,0,0.31);
--moz-box-shadow: 6px 9px 9px -7px rgba(0,0,0,0.31);
-box-shadow: 6px 9px 9px -7px rgba(0,0,0,0.31);
+    -moz-box-shadow: 6px 9px 9px -7px rgba(0,0,0,0.31);
+    box-shadow: 6px 9px 9px -7px rgba(0,0,0,0.31);
+    min-width: 825px;
 }
 
 .card-header{
@@ -45,9 +55,40 @@ box-shadow: 6px 9px 9px -7px rgba(0,0,0,0.31);
 
 .avatar{
     border-radius: 80px;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     float: left;
     margin-right: 10px;
 }
 
+.card-container{
+    width: 100%;
+}
+
+.list-group-item{
+padding: 10px 10px;
+border-radius: none;
+border-bottom: 1px solid rgba(0,0,0,.125);
+border-top: none;
+min-width: 185px;
+}
+
+.list-group-item:last-child, .list-group-item:first-child{
+border-radius: none !important;
+}
+.list-group > a > div {
+font-size: 14px;
+}
+
+.topicbadge{
+color: white;
+font-size: 12px;
+line-height: 15px;
+border-radius: 50%;
+min-width: 22px;
+min-height: 22px;
+position: relative;
+top: 0px;
+font-weight: bold;
+
+}

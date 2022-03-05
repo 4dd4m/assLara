@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     //return view('welcome');
-    return view('home.index');
+    $data['cards'] = 3;
+    return view('home.index', $data);
 });
 
 Route::get('/info', function () {
@@ -19,6 +20,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/contact', function(){
-    return view('home.contact');
+    $data['cards'] = 3;
+    return view('home.contact',$data);
 });
 
