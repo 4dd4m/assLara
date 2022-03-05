@@ -1,0 +1,76 @@
+body{
+font-size: 12px;
+background: url('https://1.bp.blogspot.com/-HGLIXpE9UsQ/Uh94RRadE7I/AAAAAAAAHVI/tU9EMm-8vCA/s640/Seamless-Background-Paper4.jpg');
+}
+
+.stcructureTitle{
+text-align: center;
+}
+
+
+nav{
+    margin-bottom: 20px;
+}
+
+.list-group{
+min-width: 200px;
+}
+
+
+.badge{
+width: 20px;
+height: 20px;
+color: white;
+border-radius: 50%;
+line-height: 15px;
+}
+
+.newForm{
+    margin-bottom: 10px;
+}
+
+.hidden{
+    display: none;
+}
+
+.form-control{
+height: 25px;
+font-size: 12px;
+}
+
+#comment{
+height: 100px;
+margin-top: 10px;
+font-size: 12px;
+}
+
+.toneLabel{
+margin-right: 20px;
+}
+
+.submitNewComment{
+    margin:auto;
+}
+
+.submittedBy{
+ color: grey;
+ margin-left: 30px;
+}
+
+.card-header{
+padding: 3px;
+}
+
+.card-body{
+padding-bottom: 10px;
+}
+
+.copyBtn{
+    padding: 1px 6px;
+}
+
+.shadow{
+box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
+-webkit-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
+-moz-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
+}

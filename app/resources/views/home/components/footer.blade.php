@@ -13,4 +13,5 @@ typeof $().modal == 'function'  || document.write(unescape('%3Cscript src="/boot
 //]]>
 </script>
 
+<script src="{{ asset('js/myapp.js') }}" defer></script>
 </body>
