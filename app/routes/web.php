@@ -1,12 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
 Route::get('/', function(){
+    dd(Request::ip());
+    $ip = Request::ip();
+    echo $ip;
 
 return view('dashboard');
 
 });
+Route::get('/test', [ApiController::class,'index']);
 
 Route::get('/comments', function () {
     //return view('welcome');
