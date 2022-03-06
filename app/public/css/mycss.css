@@ -1,10 +1,10 @@
 body{
-font-size: 12px;
-background: url('https://1.bp.blogspot.com/-HGLIXpE9UsQ/Uh94RRadE7I/AAAAAAAAHVI/tU9EMm-8vCA/s640/Seamless-Background-Paper4.jpg');
+    font-size: 12px;
+    background: url('https://1.bp.blogspot.com/-HGLIXpE9UsQ/Uh94RRadE7I/AAAAAAAAHVI/tU9EMm-8vCA/s640/Seamless-Background-Paper4.jpg');
 }
 
 .stcructureTitle{
-text-align: center;
+    text-align: center;
 }
 
 
@@ -13,16 +13,26 @@ nav{
 }
 
 .list-group{
-min-width: 200px;
+    min-width: 200px;
 }
 
+.topicbadge{
+    width: 20px;
+    height: 20px;
+    color: white;
+    border-radius: 50%;
+    line-height: 15px;
+}
 
-.badge{
-width: 20px;
-height: 20px;
-color: white;
-border-radius: 50%;
-line-height: 15px;
+.approvedCard{
+background: #00cc44;
+border-color: #00cc44;
+}
+
+.toneBadge{
+float: right;
+line-height: 12px;
+margin-left: 10px;
 }
 
 .newForm{
@@ -34,18 +44,18 @@ line-height: 15px;
 }
 
 .form-control{
-height: 25px;
-font-size: 12px;
+    height: 25px;
+    font-size: 12px;
 }
 
 #comment{
-height: 100px;
-margin-top: 10px;
-font-size: 12px;
+    height: 100px;
+    margin-top: 10px;
+    font-size: 12px;
 }
 
 .toneLabel{
-margin-right: 20px;
+    margin-right: 20px;
 }
 
 .submitNewComment{
@@ -53,16 +63,36 @@ margin-right: 20px;
 }
 
 .submittedBy{
- color: grey;
- margin-left: 30px;
+    color: white;
+    margin-left: 30px;
+}
+
+.authorLink{
+color: white;
+font-weight: bold;
+}
+
+.commentId{
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-check{
+    display: inline;
+}
+
+.authorLink:hover{
+    color: #ccc;
+    text-decoration: none;
 }
 
 .card-header{
-padding: 3px;
+    padding: 3px;
 }
 
 .card-body{
-padding-bottom: 10px;
+    padding: 5px;
 }
 
 .copyBtn{
@@ -70,8 +100,8 @@ padding-bottom: 10px;
 }
 
 .shadow{
-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
--webkit-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
--moz-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
+    box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
+    -webkit-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
+    -moz-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
 }
 

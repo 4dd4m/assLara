@@ -1,17 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\CommentController;
+//    dd(Request::ip());
+//    $ip = Request::ip();
 
 Route::get('/', function(){
-    dd(Request::ip());
-    $ip = Request::ip();
-    echo $ip;
-
-return view('dashboard');
-
+    return view('dashboard');
 });
-Route::get('/test', [ApiController::class,'index']);
+Route::get('/test', [CommentController::class,'index']);
 
 Route::get('/comments', function () {
     //return view('welcome');
@@ -60,6 +57,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
+Route::get('/ip', function(){
+    dd(Request::ip());
+    $ip = Request::ip();
+    echo $ip;
+});
 
 Route::get('/contact', function(){
     $data['cards'] = 3;

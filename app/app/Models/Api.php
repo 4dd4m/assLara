@@ -11,9 +11,14 @@ class Api extends Model
     use HasFactory;
 
 
+    //Api Controller redirects here to query
+    //the response goes back to Api Controller
+
+
     public function index(){
 
-        return DB::table('apis')->get();
+        $data = DB::table('comments')->join('sructures', 'comments.structureId', '=' ,'sructures.id')->get();
+        return $data;
 
     }
 }

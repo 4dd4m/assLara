@@ -6,30 +6,30 @@
     <div class="row">
 
     <div class="col-2">
-        @include('home.components.sidebar')
+        @include('home.components.sidebar', [$sidebar,$sidebarCount])
     </div>
 
 <div class="col-9">
 
-    <h1 class="stcructureTitle">{{ $section[0] }}</h1>
+    <h1 class="stcructureTitle">Results</h1>
 
-    <button type="button" data-name="{{ $section[0] }}" class=" shadow newForm btn btn-primary btn-sm btn-block">Add a new {{ $section[0] }} comment</button>
+    <button type="button" data-name="" class=" shadow newForm btn btn-primary btn-sm btn-block">Add a new Soon  comment</button>
 
     @include('home.components.newCommentForm')
 
-    @for($i=0;$i<count($comment1);$i++)
-        @include('home.components.card', ['comment1' => $comment1[$i]])
+    @for($i=0;$i<count($comments);$i++)
+        @include('home.components.card', ['comment' => $comments[$i]])
     @endfor
 
 
 
-    <h1 class="stcructureTitle">{{ $section[1] }}</h1>
-    <button type="button" data-name="{{ $section[1] }}" class="shadow newForm btn btn-primary btn-sm btn-block">Add a new {{ $section[1] }} comment</button>
+    <h1 class="stcructureTitle">Terminology</h1>
+    <button type="button" data-name="" class="shadow newForm btn btn-primary btn-sm btn-block">Add a new Soon comment</button>
 
     @include('home.components.newCommentForm')
 
-    @for($i=0;$i<count($comment2);$i++)
-        @include('home.components.card', ['comment1' => $comment2[$i]])
+    @for($i=0;$i<count($comments);$i++)
+        @include('home.components.card', ['comment' => $comments[$i]])
     @endfor
 
 </div>

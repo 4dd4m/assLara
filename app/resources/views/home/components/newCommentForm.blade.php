@@ -1,4 +1,4 @@
-    <div id="{{ $section[0] }}_form" class="hidden">
+    <div id="Soon" class="hidden">
 
 
     <div class="card bg-light mb-3">

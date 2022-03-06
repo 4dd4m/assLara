@@ -1,95 +1,27 @@
 <div class="shadow">
+
+@for($i=1;$i<count($sidebar);$i++)
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
     <div class="d-flex w-100 justify-content-between">
-      All
-        <span class="badge bg-primary rounded-pill topicbadge">35</span>
+        {{ $sidebar[$i]->name}} 
+        <span class="badge bg-primary rounded-pill topicbadge">
+@if(isset($sidebarCount[$i]))
+
+{{ $sidebarCount[$i]->count }}
+@else
+
+0
+
+@endif
+
+
+
+
+</span>
     </div>
   </a>
 </div>
 
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Abstracts
-        <span class="badge bg-primary rounded-pill topicbadge">1</span>
-    </div>
-  </a>
-</div>
-
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Introduction material
-    </div>
-  </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Programming
-    </div>
-  </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Terminology
-        <span class="badge bg-primary rounded-pill topicbadge">1</span>
-    </div>
-  </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Results
-    </div>
-  </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Conclusions
-    </div>
-  </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Reflection
-        <span class="badge bg-primary rounded-pill topicbadge">1</span>
-    </div>
-  </a>
-</div>
-
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      References
-    </div>
-  </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Appendix
-    </div>
-  </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Spelling Mistakes
-        <span class="badge bg-primary rounded-pill topicbadge">1</span>
-    </div>
-  </a>
-</div>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      Plagiralism
-        <span class="badge bg-primary rounded-pill topicbadge">14</span>
-    </div>
-  </a>
-</div>
+@endfor
 </div>

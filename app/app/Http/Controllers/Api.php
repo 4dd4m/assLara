@@ -6,11 +6,10 @@ use Illuminate\Http\Request;
 
 class Api extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    //This gonna handle all the ajax queries
+
+
     public function index()
     {
         //
