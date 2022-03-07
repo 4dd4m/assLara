@@ -17,7 +17,7 @@ class CommentController extends Controller
     public function index() {
         //all comments
         $a = new Api();
-        $data['comments'] = $a->index();
+        $data['comments'] = $a->getCommentsGroupedByTitle();
 
         //get sidebar elements
         $sidebar = new Sidebar();
@@ -25,8 +25,21 @@ class CommentController extends Controller
 
         //get the structure counts
         $data['sidebarCount']  = $sidebar->getTopicCountArray();
-
+        
         return view('home.index', $data);
+    }
 
+
+    public function getCommentsGroupedByTitle(){
+        $a = new Api();
+        $data['comments'] = $a->getCommentsGroupedByTitle();
+        //get sidebar elements
+        $sidebar = new Sidebar();
+        $data['sidebar'] = $sidebar->index();
+
+        //get the structure counts
+        $data['sidebarCount']  = $sidebar->getTopicCountArray();
+        
+        return view('home.index', $data);
     }
 }

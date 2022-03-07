@@ -1,6 +1,4 @@
-    <div id="Soon" class="hidden">
-
-
+    <div id="{{ $category }}_form" class="hidden">
     <div class="card bg-light mb-3">
       <div class="card-body">
 
@@ -21,21 +19,27 @@
 
   <div class="form-group">
     <div class="col-xs-8">
-      <textarea id="comment"  placeholder="Description" name="comment" cols="35" rows="5" class="form-control addcommentArea" required="required"></textarea>
+      <textarea id="comment"  placeholder="Description" name="comment" cols="35" rows="5" class="form-control" required="required"></textarea>
     </div>
   </div>
-
   <div class="form-group">
     <div class="row">
             <div class="col">
-            <label for="tone" class="control-label col-xs-4 toneLabel">Tone</label> 
-              <label class="radio-inline"> <input type="radio" name="tone" value="1"> Positive </label>
-              <label class="radio-inline"> <input type="radio" name="tone" value="0"> Negative </label>
+
+<select id="select" name="select" class="custom-select form-control">
+        <option value="null">Please select</option>
+        @for($i=0;$i<count($sidebar);$i++)
+        <option value="{{ $sidebar[$i]->id }}">{{ $sidebar[$i]->name }}</option>
+        @endfor
+      </select>
             </div>
                 <div class="col">
                   <input id="email" name="email" placeholder="e-mail" type="text" class="form-control" required="required">
                 </div>
   </div> 
+            <label for="tone" class="control-label col-xs-4 toneLabel">Tone</label> 
+              <label class="radio-inline"> <input type="radio" name="tone" value="1"> Positive </label>
+              <label class="radio-inline"> <input type="radio" name="tone" value="0"> Negative </label>
   </div> 
   <div class="form-group row"> <button name="submit" type="submit" class=" submitNewComment btn btn-sm btn-primary">Submit</button> </div>
 </form>

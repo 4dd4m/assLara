@@ -1,20 +1,48 @@
 body{
     font-size: 12px;
     background: url('https://1.bp.blogspot.com/-HGLIXpE9UsQ/Uh94RRadE7I/AAAAAAAAHVI/tU9EMm-8vCA/s640/Seamless-Background-Paper4.jpg');
+    font-family: Segoe UI,Helvetica Neue,Helvetica,Lucida Grande,Arial,Ubuntu,Cantarell,Fira Sans,sans-serif;
 }
 
 .stcructureTitle{
     text-align: center;
 }
 
+#select{
+    height:25px;
+    font-size: 12px;
+    padding: 0px;
+    padding-left: 10px;
+}
 
 nav{
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .list-group{
     min-width: 200px;
 }
+
+.sidebar{
+    position: fixed;
+    top: 100px;
+}
+
+.navbar{
+    position:fixed;
+    z-index: 1;
+}
+
+h1:first-child{
+margin-top: 0;
+}
+
+.aOffset{
+    padding-top: 100px;
+    margin-top: -100px;
+}
+
 
 .topicbadge{
     width: 20px;
@@ -48,10 +76,13 @@ margin-left: 10px;
     font-size: 12px;
 }
 
-#comment{
-    height: 100px;
+.note-editor{
     margin-top: 10px;
-    font-size: 12px;
+}
+
+textarea{
+    margin-top: 15px;
+    min-height: 70px;
 }
 
 .toneLabel{
@@ -104,3 +135,4 @@ font-weight: bold;
     -webkit-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
     -moz-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
 }
+

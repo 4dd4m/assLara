@@ -299,7 +299,7 @@ class CommentSeeder extends Seeder
                     'created_at'    => now(),
                     'updated_at'    => now(),
                     'structureId'   => $summary[$i][6],
-                    'isApproved'    => $summary[$i][4] == "1" ? 0 : 1,   //0 - not approved - 1 - approved
+                    'isApproved'    => $summary[$i][4] == "1" ? 1 : 0,   //0 - not approved - 1 - approved
                     'email'         => $summary[$i][3],
                     'tone'          => $summary[$i][5] == "n" ? 0 : 1
                 ]);

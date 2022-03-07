@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 //handling of the new form buttons 
 const buttons = document.getElementsByClassName('newForm');
 

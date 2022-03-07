@@ -8,29 +8,18 @@
     <div class="col-2">
         @include('home.components.sidebar', [$sidebar,$sidebarCount])
     </div>
-
 <div class="col-9">
+    <!--print the cards -->
+    @foreach($comments as $category =>  $comments)
+        @php( $replacedCategroy = str_replace("_"," ", $category)) 
+        <h1 class="stcructureTitle aOffset" id="link_{{$replacedCategroy}}">{{ $replacedCategroy }}</h1>
+        <button type="button" data-name="{{ $category }}" class="shadow newForm btn btn-primary btn-sm btn-block">Add a new {{ $replacedCategroy }} comment</button>
 
-    <h1 class="stcructureTitle">Results</h1>
+        @include('home.components.newCommentForm')
 
-    <button type="button" data-name="" class=" shadow newForm btn btn-primary btn-sm btn-block">Add a new Soon  comment</button>
-
-    @include('home.components.newCommentForm')
-
-    @for($i=0;$i<count($comments);$i++)
-        @include('home.components.card', ['comment' => $comments[$i]])
-    @endfor
-
-
-
-    <h1 class="stcructureTitle">Terminology</h1>
-    <button type="button" data-name="" class="shadow newForm btn btn-primary btn-sm btn-block">Add a new Soon comment</button>
-
-    @include('home.components.newCommentForm')
-
-    @for($i=0;$i<count($comments);$i++)
-        @include('home.components.card', ['comment' => $comments[$i]])
-    @endfor
-
+        @foreach($comments as $comment)
+            @include('home.components.card', ['comment' => $comment])
+        @endforeach
+    @endforeach
 </div>
 @endsection

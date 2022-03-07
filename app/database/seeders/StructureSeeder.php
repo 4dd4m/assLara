@@ -15,6 +15,7 @@ class StructureSeeder extends Seeder
      */
     public function run() {
 
+        //category names with codes
         $data = [
         ['Structure','ST'],
         ['Abstracts','AB'],

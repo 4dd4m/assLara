@@ -11,16 +11,19 @@ class ApiController extends Controller
     public function __invoke(){
     echo "fasz";
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    //list all comments
     public function index()
     {
         $a = new Api();
       $comments = $a->index();
       echo $comments;
+    }
+
+    //get comments grouped by categories
+    public function getCommentsGroupedByTitle(){
+        $a = new Api();
+        $comments = $a->getCommentsGroupedByTitle();
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\TestController;
 //    dd(Request::ip());
 //    $ip = Request::ip();
 
@@ -51,6 +52,8 @@ Route::get('/comments', function () {
 Route::get('/info', function () {
     return phpinfo();
 });
+
+Route::get('/testmodel', [TestController::class,'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
