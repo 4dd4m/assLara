@@ -288,7 +288,7 @@ class CommentSeeder extends Seeder
         }
 
         //seeding the approved comments
-        //if you need this, just change it to true
+        //if you need dontneed this, just change it to false
         if(true){
             for($i = 0; $i < count($summary); $i++){
                 //change the table layout to fir yours
