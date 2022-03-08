@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email');
             $table->integer('structureId');
             $table->boolean('tone');
-            $table->boolean('isApproved');
+            $table->boolean('isApproved')->default(0);
             $table->timestamps();
         });
     }

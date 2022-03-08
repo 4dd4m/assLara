@@ -1,0 +1,10 @@
+#!/bin/bash 
+#Generate some quick migrations and housekeeping
+
+php artisan migrate:rollback
+php artisan migrate
+php artisan db:seed StructureSeeder
+php artisan db:seed CommentSeeder
+
+
+# vim: set ft=sh syntax=on

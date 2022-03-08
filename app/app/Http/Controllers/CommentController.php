@@ -42,4 +42,8 @@ class CommentController extends Controller
         
         return view('home.index', $data);
     }
+
+    public function create(Request $r){
+
+    }
 }

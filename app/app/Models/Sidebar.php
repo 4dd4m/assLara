@@ -12,7 +12,7 @@ class Sidebar extends Model
 
 
     //this model returns the structure items for dynamic rendering
-    //also, reaturns with a count of each structure items in the database
+    //also, returns with a count of each structure items in the database
 
 
     public function index(){

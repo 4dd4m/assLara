@@ -289,7 +289,7 @@ class CommentSeeder extends Seeder
 
         //seeding the approved comments
         //if you need dontneed this, just change it to false
-        if(true){
+        if(false){
             for($i = 0; $i < count($summary); $i++){
                 //change the table layout to fir yours
                 DB::table('comments')->insert([

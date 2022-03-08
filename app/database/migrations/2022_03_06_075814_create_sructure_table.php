@@ -26,9 +26,8 @@ class CreateSructureTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        //to make it easy, rollback now doesnt delete this table
-        //Schema::dropIfExists('sructure');
+    public function down() {
+        
+        Schema::dropIfExists('sructure');
     }
 }

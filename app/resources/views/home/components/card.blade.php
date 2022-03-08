@@ -1,3 +1,14 @@
+    @if($comments != "Empty Category")
+
+    <!--print the cards -->
+    @foreach($comments as $category =>  $comments)
+        @php( $replacedCategroy = str_replace("_"," ", $category)) 
+        <h1 class="stcructureTitle aOffset" id="link_{{$replacedCategroy}}">{{ $replacedCategroy }}</h1>
+        <button type="button" data-name="{{ $category }}" class="shadow newForm btn btn-primary btn-sm btn-block">Add a new {{ $replacedCategroy }} comment</button>
+
+        @include('home.components.newCommentForm')
+
+        @foreach($comments as $comment)
 <!-- Display One Card -->
     @if( $comment->isApproved == 1)
     <div class="card text-white bg-success mb-3 shadow">
@@ -34,6 +45,13 @@
         </div>
       <div class="card-body">
         <p class="card-text">{{ $comment->comment  }}</p>
-        <p class="submittedBy">Submitted by <a href="#" class="authorLink">{{$comment->firstName}} {{$comment->lastName}} @ {{ $comment->updated_at }}</a></p>
+        <p class="submittedBy">Submitted by <a href="#" class="authorLink">{{$comment->firstName}} {{$comment->lastName}} @ {{ $comment->updated_at}}</a></p>
       </div>
    </div>
+        @endforeach
+    @endforeach
+    @else
+        <h1 class="stcructureTitle aOffset">No Comments</h1>
+        <p style="text-align:center;">Please run: php artisan db:seed CommentSeeder</p>
+    @endif
+</div>
