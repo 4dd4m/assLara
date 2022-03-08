@@ -256,7 +256,7 @@ class CommentSeeder extends Seeder
 ["Vital material, meritorious of inclusion in the main document, has been relegated to the appendix.","Alan","Webb","jac.webb@ulster.ac.uk","1","n",11]];
 
 
-        //comment the category you dont need
+        //comment out the category you dont need
         array_push($categories,$spelling);
         array_push($categories,$structure);
         array_push($categories,$abstracts);
@@ -270,6 +270,7 @@ class CommentSeeder extends Seeder
         array_push($categories,$appendix);
 
         //seeding the unapproved comments
+        //if your table is different, just taylor it
         foreach($categories as $category){
             for($i = 0; $i < count($category); $i++){
                 //change the table layout to fir yours
@@ -287,8 +288,9 @@ class CommentSeeder extends Seeder
             }       
         }
 
-        //seeding the approved comments
-        //if you need dontneed this, just change it to false
+        //seeding the approved comments (found in the summary tab in *.xls)
+        //if you need need this, just change it to true
+        //if your table is different, just taylor it
         if(false){
             for($i = 0; $i < count($summary); $i++){
                 //change the table layout to fir yours
