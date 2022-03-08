@@ -72,8 +72,11 @@ margin-left: 10px;
 }
 
 .form-control{
-    height: 25px;
     font-size: 12px;
+}
+
+#tone{
+    margin-top:15px;
 }
 
 .note-editor{
@@ -136,4 +139,8 @@ font-weight: bold;
     -moz-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
 }
 
+.alert{
+    padding: 0.25rem 1.25rem;
+    margin-bottom: 10px;
+}
 

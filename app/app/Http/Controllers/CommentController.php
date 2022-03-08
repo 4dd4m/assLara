@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Api;
+use App\Models\Comment;
 use App\Models\Sidebar;
+use App\Http\Controllers\AjaxController;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -16,8 +17,8 @@ class CommentController extends Controller
     //building the sidebar
     public function index() {
         //all comments
-        $a = new Api();
-        $data['comments'] = $a->getCommentsGroupedByTitle();
+        //$a = new AjaxController();
+        //$data['comments'] = $a->all();
 
         //get sidebar elements
         $sidebar = new Sidebar();
@@ -29,21 +30,4 @@ class CommentController extends Controller
         return view('home.index', $data);
     }
 
-
-    public function getCommentsGroupedByTitle(){
-        $a = new Api();
-        $data['comments'] = $a->getCommentsGroupedByTitle();
-        //get sidebar elements
-        $sidebar = new Sidebar();
-        $data['sidebar'] = $sidebar->index();
-
-        //get the structure counts
-        $data['sidebarCount']  = $sidebar->getTopicCountArray();
-        
-        return view('home.index', $data);
-    }
-
-    public function create(Request $r){
-
-    }
 }

@@ -3,10 +3,12 @@
 
     <!--if the sidebar has element, iterating them --> 
         @if($sidebar->isNotEmpty() == true)
+            <button type="button" class="shadow newForm btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#newComment">Add a new comment</button>
 
         @for($i=0;$i<count($sidebar);$i++)
         <div class="list-group shadow">
-          @php( $replacedCategory = str_replace("_"," ",$sidebar[$i]->name) )
+          @php( $replacedCategory = str_replace(" ","_",$sidebar[$i]->name) )
+          @php( $replacedCategory = str_replace(" ","_",$sidebar[$i]->name) )
           <a href="#link_{{$replacedCategory}}" class="list-group-item list-group-item-action" 
               aria-current="true">
             <div class="d-flex w-100 justify-content-between">

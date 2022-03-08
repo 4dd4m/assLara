@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\AjaxController;
 //    dd(Request::ip());
 //    $ip = Request::ip();
 
-Route::get('/', [CommentController::class,'index']);
+Route::get('/', [CommentController::class,'index'])->name('home.index');
+Route::get('/show', [AjaxController::class,'all']);
+Route::post('/', [AjaxController::class,'create']);
 
 Route::get('/info', function () {
     return phpinfo();

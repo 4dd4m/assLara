@@ -52,6 +52,6 @@
     @endforeach
     @else
         <h1 class="stcructureTitle aOffset">No Comments</h1>
-        <p style="text-align:center;">Please run: php artisan db:seed CommentSeeder</p>
+        <p>Please run: php artisan db:seed CommentSeeder</p>
     @endif
 </div>

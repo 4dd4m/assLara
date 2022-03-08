@@ -1,8 +1,8 @@
 @extends('home.layout.app')
-@section('title', 'Supervisor View')
+@section('title', 'Comment timeline')
 @section('content')
 
-<div class="container-fluid card-container">
+<div class="container-fluid er">
     <div class="row">
 
     <div class="col-2">
@@ -12,6 +12,11 @@
 
 <div class="col-9">
         <!--displaying the comments --> 
-        @include('home.components.card', [$comments])
-</div>
+
+    <!-- Modal -->
+
+        <div id="cards">
+        </div>
+</div>  <!--fluid conatiner --> 
+    @include('home.components.newCommentForm')
 @endsection

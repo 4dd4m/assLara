@@ -10,7 +10,7 @@
             <a class="nav-link" href="#">All <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact">Add</a>
+            <a class="nav-link" data-toogle="modal" data-target="#newComment" href="#">Add a Comment</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Open</a>

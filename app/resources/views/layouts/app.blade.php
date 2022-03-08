@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <title>HTML5 Skeleton</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HTML5 skeleton index.html">
-  <meta name="keywords" content="html5,skeleton,index,homepage,jquery,bootstrap">
-  <meta name="author" content="Arul John">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" rel="stylesheet">
-  </head>
+    @include('components.header')
 <body>
 <header class="navbar navbar-default">
   <nav>
@@ -28,24 +21,21 @@
     </div>
   </div>
 </header>
-<main role="main">
-  <div class="container">
+<div class="container-fluid">
     <div class="row">
+
+    <div class="col-2">
+        <!--Rendering Sidebar -->
+        @include('home.components.sidebar', [$sidebar,$sidebarCount])
+    </div>
+    <div class="col-9">
       @yield('content')
+        <div id="cards">
+        </div>
     </div>
   </div>
-</main>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-//<![CDATA[
-window.jQuery || document.write(unescape('%3Cscript src="/jquery.min.js">%3C/script>'))
-//]]>
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
-//<![CDATA[
-typeof $().modal == 'function'  || document.write(unescape('%3Cscript src="/bootstrap.min.js">%3C/script>'))
-//]]>
-</script>
-</body>
+</div>  <!--fluid conatiner --> 
+
+    @include('components.footer')
+</html>
 
