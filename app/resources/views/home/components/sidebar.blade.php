@@ -3,7 +3,7 @@
 
     <!--if the sidebar has element, iterating them --> 
         @if($sidebar->isNotEmpty() == true)
-            <button type="button" class="shadow newForm btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#newComment">Add a new comment</button>
+            <button type="button" id="openNewCommentModal" class="shadow newForm btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#newComment">Add a new comment</button>
 
         @for($i=0;$i<count($sidebar);$i++)
         <div class="list-group shadow">
@@ -13,13 +13,15 @@
               aria-current="true">
             <div class="d-flex w-100 justify-content-between">
                 {{ $sidebar[$i]->name}} 
-                <span class="badge bg-primary rounded-pill topicbadge">
+                <span id="counter_{{$sidebar[$i]->code }}" class="badge bg-primary rounded-pill topicbadge">
                     <!--render the counter --> 
-                    @if(isset($sidebarCount[$i]))
-                    {{ $sidebarCount[$i]->count }}
-                    @else
-                    0
-                    @endif
+
+                        @for($j=0;$j<count($sidebarCount);$j++)
+                                    @if($sidebarCount[$j]->id == $sidebar[$i]->id)
+                                        {{ $sidebarCount[$j]->count }}
+                                        @break
+                                    @endif
+                        @endfor
                 </span>
             </div>
           </a>

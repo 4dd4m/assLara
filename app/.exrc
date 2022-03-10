@@ -2,7 +2,6 @@
 cabbrev ctags !ctags -R --exclude=node_modules --exclude=public --exclude=vendor .
 
 "ignored directories
-"let g:ctrlp_custom_ignore = 'vendor$\|node_modules$\|public$\|storage$\|bootstrap$\|config$'
 
 "search by filename
 "let g:ctrlp_by_filename = 1
@@ -20,4 +19,4 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 "let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*\|server.php'
 
 "MRU files are relative to this directory
-let g:ctrlp_mruf_relative = 0
+let g:ctrlp_mruf_relative = 1

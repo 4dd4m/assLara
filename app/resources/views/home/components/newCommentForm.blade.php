@@ -11,6 +11,7 @@
                 <div id="errormsg"></div>
                 <form class="form-horizontal" id="newCommentForm">
                     @csrf
+                    <input type="hidden" id="commentId" value="">
                     <div class="row">
                         <div class="col">
                             <div class="col-xs-8"> <input id="firstName" name="firstName"  placeholder="Contributor's First Name" type="text" class="form-control" required="required"> </div>
@@ -49,8 +50,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="closeNewForm btn btn-secondary"  data-dismiss="modal">Close</button>
-                <button type="button" class="saveNewComment btn btn-primary">Save changes</button>
+                <button type="button" class="closeNewForm btn btn-danger"  data-dismiss="modal">Close</button>
+                <button type="button" class="newCommentFormSaveButton NewComment btn btn-primary">Save changes</button>
+                <button type="button" class="newCommentFormEditButton NewComment btn btn-primary hidden">Edit</button>
             </div>  <!--modal footer --> 
         </div>      <!--modal body --> 
     </div>

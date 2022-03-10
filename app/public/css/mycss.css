@@ -1,7 +1,7 @@
 body{
-    font-size: 12px;
     background: url('https://1.bp.blogspot.com/-HGLIXpE9UsQ/Uh94RRadE7I/AAAAAAAAHVI/tU9EMm-8vCA/s640/Seamless-Background-Paper4.jpg');
     font-family: Segoe UI,Helvetica Neue,Helvetica,Lucida Grande,Arial,Ubuntu,Cantarell,Fira Sans,sans-serif;
+    font-size: 12px;
 }
 
 .stcructureTitle{
@@ -9,14 +9,14 @@ body{
 }
 
 #select{
-    height:25px;
     font-size: 12px;
-    padding: 0px;
+    height:25px;
     padding-left: 10px;
+    padding: 0px;
 }
 
 nav{
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     width: 100%;
 }
 
@@ -35,21 +35,36 @@ nav{
 }
 
 h1:first-child{
-margin-top: 0;
+margin-top: 90px;
+text-align: center;
 }
 
+.new{
+    background:#66ffff;
+    font-style:italic;
+}
+
+#commentTable  tr  td{
+    vertical-align: middle;
+}
+
+.bold{
+    font-weight:bold;
+}
+
+
 .aOffset{
-    padding-top: 100px;
     margin-top: -100px;
+    padding-top: 100px;
 }
 
 
 .topicbadge{
-    width: 20px;
-    height: 20px;
-    color: white;
     border-radius: 50%;
+    color: white;
+    height: 20px;
     line-height: 15px;
+    width: 20px;
 }
 
 .approvedCard{
@@ -125,8 +140,13 @@ font-weight: bold;
     padding: 3px;
 }
 
+.card{
+    margin-bottom: 100px;
+}
+
 .card-body{
-    padding: 5px;
+    border-top: 1px solid #454d55;
+    padding: 0;
 }
 
 .copyBtn{
@@ -135,12 +155,10 @@ font-weight: bold;
 
 .shadow{
     box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
-    -webkit-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
-    -moz-box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
 }
 
 .alert{
-    padding: 0.25rem 1.25rem;
     margin-bottom: 10px;
+    padding: 0.25rem 1.25rem;
 }
 

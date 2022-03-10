@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TestController;
@@ -8,8 +7,16 @@ use App\Http\Controllers\AjaxController;
 //    $ip = Request::ip();
 
 Route::get('/', [CommentController::class,'index'])->name('home.index');
-Route::get('/show', [AjaxController::class,'all']);
-Route::post('/', [AjaxController::class,'create']);
+Route::get('/comment', [AjaxController::class,'all']);
+
+
+//CREATE
+Route::post('/comment', [AjaxController::class,'create']);
+//READ
+Route::get('/comment/{id}',  [AjaxController::class, 'show']);
+//UPDATE
+//DELETE
+Route::delete('/comment/{id}', [AjaxController::class,'delete']);
 
 Route::get('/info', function () {
     return phpinfo();
