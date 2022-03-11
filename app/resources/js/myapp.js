@@ -5,59 +5,54 @@ $.ajaxSetup({
 });
 
 function renderAllComments(){
-console.log("Rendering all comments");
-//render all comments
-$('#commentTable .datarow').remove();
-$.ajax({
-    type : "GET",
-    url : "/comment",
-    dataType : "json",
-    success: function (data){
+    console.log("Rendering all comments");
+    //render all comments
+    $('#tbody').empty();
+    $.ajax({
+        type : "GET",
+        url : "/comment",
+        dataType : "json",
+        success: function (data){
 
-        var output = "";
-        var currentStructure = "";
-        for(let i=0;i < data.length;i++){
+            var output = "";
+            for(let i=0;i < data.length;i++){
 
-            //action button itional options 
-            var e = data[i];
-            var tone = e.tone == 1 ? "Positive" : "Negative";
-            var isApproved = e.isApproved == 1 ? "Approved" : "Pending";
-            var approve_disabled = e.isApproved == 1 ? "disabled" : "";
-            var edit_disabled = e.isApproved == 1 ? "disabled" : "";
-            
-            //render the action buttons
-            var edit = `<div class="btn-group" role="group" aria-label="Basic example">
+                //action button itional options 
+                var e = data[i];
+                var tone = e.tone == 1 ? "Positive" : "Negative";
+                var isApproved = e.isApproved == 1 ? "Approved" : "Pending";
+                var isApprovedClass = e.isApproved == 1 ? "approved" : "";
+                var approve_disabled = e.isApproved == 1 ? "disabled" : "";
+                var edit_disabled = e.isApproved == 1 ? "disabled" : "";
+
+                //render the action buttons
+                var edit = `<div class="btn-group" role="group" aria-label="Basic example">
                         <button data-rowid="${e.id}" ${approve_disabled} data-action="approve" type="button" class="actionButton btn btn-sm btn-success">A</button>
                         <button data-rowid="${e.id}" ${edit_disabled} data-action="edit" type="button" class="actionButton btn  btn-sm btn-primary">E</button>
                         <button data-rowid="${e.id}" data-action="delete" type="button" data-struct="${e.code}" class="actionButton btn btn-sm btn-danger">D</button>
                         </div>`;
 
-            output += `<tr id="${e.id}" class="datarow"><td class="bold">${e.code}${e.id}</td>
+            output += 
+            `<tr id="${e.id}" class="datarow ${isApprovedClass}">
+            <td><div class="form-check">
+              <input class="form-check-input clipboardBox" type="checkbox" value="${e.id}" />
+            </div></td>
+            <td class="bold">${e.code}${e.id}</td>
             <td>${e.firstName} ${e.lastName}</td>
             <td>${e.comment}</td>
             <td>${tone}</td>
             <td>${isApproved}</td>
             <td>${edit}</td>
             </tr>`;
+            }
+            $('#tbody').append(output);
+            bindActionButtons();
 
-        }
-        //$('#commentTable').append(output);
-        $('#commentTable thead').append(output);
-        bindActionButtons();
-
-    } //success
-});
+        } //success
+    });   //ajax
 }
 
 renderAllComments();
-
-
-
-
-
-
-
-
 
 // save a new comment
 $('.newCommentFormSaveButton').on('click',function(){
@@ -90,22 +85,33 @@ $('.newCommentFormSaveButton').on('click',function(){
             var approve_disabled = isApproved == 1 ? "disabled" : "";
             var edit_disabled = isApproved == 1 ? "disabled" : "";
 
-            output  += `<div class="btn-group" role="group">
-              <button data-rowid="${data.id}" ${approve_disabled} data-action="approve" type="button" class="actionButton btn btn-sm btn-success">A</button>
-              <button data-rowid="${data.id}" ${edit_disabled} data-action="edit" type="button" class="actionButton btn  btn-sm btn-primary">E</button>
-              <button data-rowid="${data.id}" data-action="delete" data-struct="${data.code}" type="button" class="deleteButton actionButton btn btn-sm btn-danger">D</button>
-                </div>`;
+            var edit  = 
+              `<div class="btn-group" role="group">
+
+              <button data-rowid="${data.id}" ${approve_disabled} data-action="approve" 
+              type="button" class=" {{$isApprovedClass}} 
+              actionButton btn btn-sm btn-success">A</button>
+
+              <button data-rowid="${data.id}" ${edit_disabled} data-action="edit"
+              type="button" class="actionButton btn  btn-sm btn-primary">E</button>
+
+              <button data-rowid="${data.id}" data-action="delete" data-struct="${data.code}"
+              type="button" class="deleteButton actionButton btn btn-sm btn-danger">D</button>
+              </div>`;
 
             output += `<tr class="new" id="${data.id}"><td class="bold">${data.code}${data.id}</td>
+            <td><div class="form-check">
+              <input class="form-check-input clipboardBox" type="checkbox" value="${data.id}" />
+            </div></td>
             <td>${data.firstName} ${data.lastName}</td>
             <td>${data.comment}</td>
             <td>${tone}</td>
             <td>${isApproved}</td>
             <td>${edit}</td>
             </tr>`;
-            $('#commentTable tbody').prepend(output);
+            $('#commentTable tbody tr:nth-child(1)').before(output);
             bindActionButtons()
-            displayCommentModal(data.id); 
+            //a modal to displaying the values
             $('html,body').animate({scrollTop: $("#databaseHeader").offset().top},'slow');
         },
         error: function(data){
@@ -130,8 +136,6 @@ function bindActionButtons(){
     //the problem is here the DOM loads faster than the ajax query
     //so have to call it after the buttons are loaded
 
-
-
     $('.closeNewForm').on('click', function(){
         $('#newCommentForm').trigger("reset");
         $('#errormsg').empty();
@@ -142,10 +146,6 @@ function bindActionButtons(){
         $('#errormsg').empty();
     });
 
-
-
-
-    
     $('.actionButton').on('click', function(){
 
         //get the action of the button and the id
@@ -189,6 +189,28 @@ function bindActionButtons(){
                 break;
         }
     });
+
+
+$('.form-check-input').change(function(){
+    clipboard = [];
+
+    var checkboxes = document.getElementsByClassName('form-check-input');
+
+    for(let i=0;i < checkboxes.length ;i++){
+
+        if(checkboxes[i].checked){
+           clipboard.push(checkboxes[i].value);
+        }        
+        
+    }
+
+    console.log(clipboard);
+
+
+});
+
+
+
 }
 
 //delete a comment (click delete in modal)
@@ -200,16 +222,26 @@ $('#deleteCommentId').on('click',function(){
         url : "/comment/" + commentId,
         dataType : "json",
         success : function(data){
-        $('#commentTable thead:after').empty();
-        $('#counter_'+structureCode).val( $('#counter_'+structureCode).val() + 1  );
+            $('#counter_'+structureCode).val( $('#counter_'+structureCode).val() + 1  );
         },
+    }).then( function(){
+
+        renderAllComments();
+        $('#tbody').empty();
+
     });
+
+
+
+
     $('#deleteModal').modal('hide');
-    var commentId = this.setAttribute('data-id', "-1");
-    renderAllComments();
+    var commentId = this.setAttribute('data-id', "");
 });
 
 
-$('table').on('click', '', function(e){
-   $(this).closest('tr').remove()
-})
+$('#openscratchPad').on('click', function(){
+    console.log('open pad');
+    $('#scratchpad').modal('show');
+});
+
+

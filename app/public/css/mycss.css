@@ -39,6 +39,20 @@ margin-top: 90px;
 text-align: center;
 }
 
+
+#openscratchPad{
+    margin-top: 10px;
+}
+
+#scratchpadArea{
+    width: 100%;
+}
+
+.form-check input{
+    margin: auto;
+    position: relative;
+    top: 3px;
+}
 .new{
     background:#66ffff;
     font-style:italic;
@@ -67,7 +81,7 @@ text-align: center;
     width: 20px;
 }
 
-.approvedCard{
+.approved{
 background: #00cc44;
 border-color: #00cc44;
 }
@@ -145,7 +159,6 @@ font-weight: bold;
 }
 
 .card-body{
-    border-top: 1px solid #454d55;
     padding: 0;
 }
 

@@ -59,13 +59,10 @@ class AjaxController extends Controller {
     public function delete($id){
 
         $c = new Comment();
-        $data = $c->deleteComment($id);
-        $code = $data == true ? 200 : 400;
-
-        if($data == true){
-            $data = $c->all();
-        }
-        
+        $result = $c->deleteComment($id);
+        $code = $result == true ? 200 : 400;
+        $data['message'] = $code == 200 ? "success" : "error";
+        $data = $c->index();
         return response()->json($data,$code);
     }
 }
