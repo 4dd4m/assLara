@@ -1,21 +1,26 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\TestController;
 use App\Http\Controllers\AjaxController;
 
 Route::get('/', [CommentController::class,'index'])->name('Home.index');
-Route::get('/comment', [AjaxController::class,'all']);
 
 //CRUD RELATED----------------------------------------
 //CREATE
 Route::post('/comment', [AjaxController::class,'create']);
-//READ
+//READ 1
 Route::get('/comment/{id}',  [AjaxController::class, 'show']);
+//READ ALL
+Route::get('/comment', [AjaxController::class,'all']);
 //UPDATE
+Route::patch('/comment/{id}',  [AjaxController::class, 'update']);
 //DELETE
 Route::delete('/comment/{id}', [AjaxController::class,'delete']);
 //CRUD RELATED----------------------------------------
+//
+
+Route::get('/lastcomment', [AjaxController::class,'lastComment']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

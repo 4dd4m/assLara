@@ -7,7 +7,13 @@
                     class="shadow newForm btn btn-primary btn-sm btn-block" 
                     data-toggle="modal" data-target="#newComment">
                     Add a new comment</button>
+        <div class="list-group shadow">
+          <a href="#" class="filterButton list-group-item list-group-item-action" 
+             aria-current="true" data-structureId="all">
+            <div class="d-flex w-100 justify-content-between">All</div>
+          </a>
 
+        </div>
         @for($i=0;$i<count($sidebar);$i++)
         @php($c = 0)
 
@@ -22,7 +28,6 @@
                 <span id="counter_{{$sidebar[$i]->code }}" 
                       class="badge bg-primary rounded-pill topicbadge">
                     <!--render the counter --> 
-
                         @for($j=0;$j<count($sidebarCount);$j++)
                                     @if($sidebarCount[$j]->id == $sidebar[$i]->id)
                                         @php( $c = $sidebarCount[$j]->count )

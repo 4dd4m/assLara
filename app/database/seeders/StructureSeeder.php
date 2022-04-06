@@ -13,7 +13,7 @@ class StructureSeeder extends Seeder
      *
      * @return void
      */
-    public function run() {
+    public function run(){
 
         //category names with codes
         $data = [

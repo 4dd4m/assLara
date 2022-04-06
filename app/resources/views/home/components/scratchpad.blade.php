@@ -8,12 +8,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <textarea id="scratchpadArea" name="" cols="30" rows="10"></textarea>
-                <p>Selecting more comments will overwrite this area</p>
+                <textarea id="scratchpadArea" cols="30" rows="10"></textarea>
+                <p>Selecting less or more comments will overwrite this area</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Reset</button>
-                <button type="button" class="btn btn-success" data-dismiss="dispose">Back</button>
                 <button type="button" class="btn btn-primary">Render Message</button>
             </div>
         </div>

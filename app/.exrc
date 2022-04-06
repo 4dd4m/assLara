@@ -1,10 +1,9 @@
 "run ctags
 cabbrev ctags !ctags -R --exclude=node_modules --exclude=public --exclude=vendor .
 
-"ignored directories
 
 "search by filename
-"let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 1
 
 "resize window
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
@@ -20,3 +19,14 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 
 "MRU files are relative to this directory
 let g:ctrlp_mruf_relative = 1
+
+set wildignore+=*/Console/*,*/Exceptions/*,*/Providers/*
+set wildignore+=*/Middleware/*,*/Auth/*,*/sail_mysql/*
+set wildignore+=*/bootstrap/*,*/storage/*,*/node_modules/*
+set wildignore+=*/laravel/mysql/*
+set wildignore+=*/config/*,*/public/*,*/vendor/*
+set wildignore+=artisan,*lock*,*docker*,*.xml
+set wildignore+=composer.json,package.json,webpack.mix.js
+set wildignore+=*/app.js,*/bootstrap.js,*.sql
+set wildignore+=*/sass/*,app.css
+set path+=**

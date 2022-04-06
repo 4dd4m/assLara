@@ -8,12 +8,6 @@ body{
     text-align: center;
 }
 
-#select{
-    font-size: 12px;
-    height:25px;
-    padding-left: 10px;
-    padding: 0px;
-}
 
 nav{
     margin-bottom: 40px;
@@ -35,8 +29,8 @@ nav{
 }
 
 h1:first-child{
-margin-top: 90px;
-text-align: center;
+    margin-top: 90px;
+    text-align: center;
 }
 
 
@@ -46,6 +40,7 @@ text-align: center;
 
 #scratchpadArea{
     width: 100%;
+    min-height: 400px;
 }
 
 .form-check input{
@@ -82,14 +77,14 @@ text-align: center;
 }
 
 .approved{
-background: #00cc44;
-border-color: #00cc44;
+    background: #00cc44;
+    border-color: #00cc44;
 }
 
 .toneBadge{
-float: right;
-line-height: 12px;
-margin-left: 10px;
+    float: right;
+    line-height: 12px;
+    margin-left: 10px;
 }
 
 .newForm{
@@ -131,8 +126,8 @@ textarea{
 }
 
 .authorLink{
-color: white;
-font-weight: bold;
+    color: white;
+    font-weight: bold;
 }
 
 .commentId{
@@ -170,8 +165,16 @@ font-weight: bold;
     box-shadow: 8px 10px 7px -7px rgba(0,0,0,0.43);
 }
 
+#select{
+    font-size: 12px;
+    height:25px;
+    padding-left: 10px;
+    padding: 0px;
+}
+
 .alert{
     margin-bottom: 10px;
     padding: 0.25rem 1.25rem;
 }
+
 

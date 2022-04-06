@@ -4,16 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSructureTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('sructures', function (Blueprint $table) {
+class CreateSructureTable extends Migration{
+
+    public function up(){
+        Schema::create('sructures', function(Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('code');
@@ -21,13 +15,7 @@ class CreateSructureTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down() {
-        
+    public function down(){
         Schema::dropIfExists('sructure');
     }
 }

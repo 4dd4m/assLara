@@ -7,15 +7,14 @@ use App\Models\Sidebar;
 use App\Http\Controllers\AjaxController;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
-{
+class CommentController extends Controller{
 
     //this is the main controller to display the site
 
 
     //rendering all the comments and
     //building the sidebar
-    public function index() {
+    public function index(){
         //all comments
         //$a = new AjaxController();
         //$data['comments'] = $a->all();
