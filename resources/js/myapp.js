@@ -78,8 +78,8 @@ $('.newCommentFormSaveButton').on('click',function(){
     }
 
     console.log("Save button hit with commentId: " + data.commentId);
-    var type = data.commentId.length > 1 ? "PATCH" : "POST";
-    var url = data.commentId.length > 1 ? "/comment/" + data.commentId : "/comment";
+    var type = data.commentId.length >= 1 ? "PATCH" : "POST";
+    var url = data.commentId.length >= 1 ? "/comment/" + data.commentId : "/comment";
     console.log("Request type is: " + type);
 
     //if the hidden field not empty, that means we do a UPDATE request
@@ -167,6 +167,7 @@ function bindActionButtons(){
     $('.newForm').on('click', function(){
         $('#newCommentForm').trigger("reset");
         $('#errormsg').empty();
+        $('#commentId').val("");
     });
 
     $('.actionButton').on('click', function(){
