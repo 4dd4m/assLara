@@ -9,14 +9,17 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['lastName','firstName','comment','tone','email','structureId'];
+    protected $fillable = ['lastName','firstName',
+        'comment','tone','email','structureId'];
 
 
     //Api Controller redirects here to query
     //the response goes back to Api Controller
 
-    //get all comments
     public function index($structureId=""){
+        //get all comments or by strucutre ID
+        //Logged in -> all Comments
+        //Logged off -> just approved
         $data = DB::table('comments')
             ->join('sructures', 'comments.structureId', '=' ,'sructures.id')
             ->select('comments.*','sructures.code','sructures.name')
@@ -30,13 +33,14 @@ class Comment extends Model
         if($structureId != ""){
             $data->where('structureId',$structureId);
         }
+
         $data = $data->get();
         return $data;
     }
 
 
-    //show one record
     public function show($id){
+        //returns one record based on id
         $data = DB::table('comments')
             ->join('sructures', 'comments.structureId', '=' ,'sructures.id')
             ->select('comments.*','sructures.code','sructures.name')
@@ -45,8 +49,8 @@ class Comment extends Model
         return $data;
     }
 
-    //get the last record (after new post is created)
     public static function last(){
+        //get the last record 
 
         $data = DB::table('comments')
             ->join('sructures', 'comments.structureId', '=' ,'sructures.id')
@@ -58,6 +62,7 @@ class Comment extends Model
 
     public function deleteComment($id){
         //delete a single comment
+        
         $deleted = Comment::find($id);
         $deleted->delete();
         return $deleted ? true : false;
@@ -65,6 +70,7 @@ class Comment extends Model
 
     function toggleApprove($id){
         //approves a comment Auth check in ajax
+
         $oldState = DB::table('comments')->where('id',$id)->get(['isApproved']); 
         $newState = $oldState[0]->isApproved == 1 ? 0 : 1;
         DB::table('comments')->where('id',$id) 

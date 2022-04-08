@@ -3,13 +3,18 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }});
 
-let currentscrollpos;
+let currentscrollpos; //autoscroll help
 
 function renderAllComments(structure=null){
-    console.log("Rendering all comments");
     //render all comments
+
     $('#tbody').empty();
-    const url = structure == null || structure == "" ? "/comment" : "comment/cat/" + structure
+
+    //if we have a parameter we query only  a category
+    //no paramter = al comments
+    const url = structure == null || structure == "" 
+        ? "/comment" : "comment/cat/" + structure;
+
     $.ajax({
         type : "GET",
         url : url,
@@ -18,13 +23,14 @@ function renderAllComments(structure=null){
             var output = "";
             for(let i=0;i < data.comments.length;i++){
 
-                //action button itional options 
+                //some displayed values based on the data
                 var e = data.comments[i];
                 var tone = e.tone == 1 ? "Positive" : "Negative";
                 var isApproved = e.isApproved == 1 ? "Approved" : "Pending";
                 var isApprovedClass;
                 var edit;
 
+                //render the action button if we are Loggedin
                 if(data.isAuth == true){
                     isApprovedClass = e.isApproved == 1 ? "approved" : "";
                     edit = `<div class="btn-group" role="group" aria-label="Basic example">
@@ -41,18 +47,22 @@ function renderAllComments(structure=null){
                         </div>`;
                 }
 
+                //actual commentRow
                 output += 
-                    `<tr id="comment_${e.id}" class="datarow ${isApprovedClass}">
+                    `<tr id="comment_${e.id}" 
+                    class="datarow ${isApprovedClass}">
                     <td><div class="form-check">
-                      <input class="form-check-input clipboardBox" type="checkbox" value="${e.id}" />
+                      <input class="form-check-input clipboardBox"
+                      type="checkbox" value="${e.id}" />
                     </div></td>
                     <td class="bold">${e.code}${e.id}</td>
                     <td>${e.firstName} ${e.lastName}</td>
                     <td id="commentText_${e.id}">${e.comment}</td>
                     <td>${tone}</td>
                     <td>${isApproved}</td>`;
-                output += data.isAuth == true ?  `<td>${edit}</td>` : "";
-                output += `</tr>`;
+
+                //inject the buttons
+                output += data.isAuth == true ?  `<td>${edit}</td></tr>` : "</tr>";
             }
             $('#tbody').empty();
             $('#tbody').append(output);
@@ -331,9 +341,9 @@ $('.filterButton').on('click', function(){
 
 
 $('#toClipboard').on('click', function(){
-    
-            $("#scratchpadArea").select();
-    		document.execCommand('copy');
+
+    $("#scratchpadArea").select();
+    document.execCommand('copy');
 
 
 });

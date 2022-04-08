@@ -25,7 +25,7 @@
                                     <th scope="col">Tone</th>
                                     <th scope="col">Status</th>
                                     @if(Auth::check())
-                                    <th scope="col">Actions</th>
+                                        <th scope="col">Actions</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -37,12 +37,14 @@
 
             </div>  <!--fluid conatiner --> 
             @include('home.components.newCommentForm')
-            <div class="modal hidden fade" id="deleteModal" tabindex="-1" role="dialog">
+            <div class="modal hidden fade" id="deleteModal" tabindex="-1" 
+                role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" 
+                                data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -50,8 +52,10 @@
                             <p>Delete A Comment Are You Sure?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="deleteCommentId" class="btn btn-danger">Delete</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" id="deleteCommentId" 
+                                class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-secondary" 
+                                data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>

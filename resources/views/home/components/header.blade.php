@@ -7,10 +7,5 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/mycss.css') }}" rel="stylesheet">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <script>
-
-    window.AuthUser = "{{{ (Auth::user()) ? Auth::user() : null }}}";
-
-  </script>
   </head>
 
