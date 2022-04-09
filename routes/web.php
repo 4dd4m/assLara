@@ -1,28 +1,28 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Ajax;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', [CommentController::class,'index'])->name('Home');
+Route::get('/', CommentController::class)->name('Home');
 
-//CRUD RELATED----------------------------------------
-//CREATE
-Route::post('/comment', [AjaxController::class,'create']);
-//READ 1
-Route::get('/comment/{id}',  [AjaxController::class, 'show']);
-//READ SOME
-Route::get('/comment/cat/{id}',  [AjaxController::class, 'getCommentsByStructureId']);
-//READ ALL
-Route::get('/comment', [AjaxController::class,'all']);
-//UPDATE
-Route::patch('/comment/{id}',  [AjaxController::class, 'update']);
-//DELETE
-Route::delete('/comment/{id}', [AjaxController::class,'delete']);
-//CRUD RELATED----------------------------------------
-//
+Route::controller(Ajax::class)->group(function(){
+    Route::prefix('comment')->group( function(){
+        Route::post('/', 'create');           //C
+        Route::get('/{id}', 'show');         //R
+        Route::put('/{id}', 'update');      //U
+        Route::delete('/','delete');       //D
+        Route::get('/', 'index');         //I
+    });
+});
+
+//Filter By Category
+Route::get('/comment/cat/{id}',  [Ajax::class, 'getCommentsByStructureId']);
 
 Route::get('/lastcomment', [AjaxController::class,'lastComment']);
+Route::get('/test', [TestController::class,'test']);
 
 
 Route::post('/toggleApprove', [AjaxController::class,'toggleApprove']);
@@ -39,10 +39,9 @@ Route::get('/contact', function(){
     return view('home.contact',$data);
 });
 
-require __DIR__.'/auth.php';
 
 
-Route::get('/isAuth',  [CommentController::class, 'isAuth']);
+Route::get('/isAuth',  [AjaxController::class, 'isAuth']);
 
 Route::get('/logout', function(){
     Auth::logout();
@@ -56,3 +55,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/dashboard', function () {
     return view('welcome');
 })->middleware(['auth'])->name('dashboard');
+
+
+
+require __DIR__.'/auth.php';

@@ -73,12 +73,12 @@ $('.newCommentFormSaveButton').on('click',function(){
         'email' : $('#email').val(),
         'tone' : $('#tone').val(),
         'comment' : $('#comment').val(),
-        'structureId' : $('#structureId').val(),
+        'structure_id' : $('#structureId').val(),
         'commentId' : $('#commentId').val(),
     }
 
     console.log("Save button hit with commentId: " + data.commentId);
-    var type = data.commentId.length > 1 ? "PATCH" : "POST";
+    var type = data.commentId.length > 1 ? "PUT" : "POST";
     var url = data.commentId.length > 1 ? "/comment/" + data.commentId : "/comment";
     console.log("Request type is: " + type);
 
@@ -193,7 +193,7 @@ function bindActionButtons(){
                         $('#lastName').val(data[0].lastName);
                         $('#comment').val(data[0].comment);
                         $('#email').val(data[0].email);
-                        $('#structureId').val(data[0].structureId);
+                        $('#structureId').val(data[0].structure_id);
                         $('#tone').val(data[0].tone);
                         $('#commentId').val(data[0].id);
                         $('#newComment').modal('show');
@@ -256,8 +256,11 @@ $('#deleteCommentId').on('click',function(){
     var structureCode = this.getAttribute('data-struct');
     $.ajax({
         type : "DELETE",
-        url : "/comment/" + commentId,
+        url : "/comment",
         dataType : "json",
+        data : {
+            id : commentId,
+        },
         success : function(data){
             $('#counter_'+structureCode).val( 
                 $('#counter_'+structureCode).val() + 1  

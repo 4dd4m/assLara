@@ -81,9 +81,9 @@ class CommentSeeder extends Seeder
                     'lastName'      => "Webb",
                     'created_at'    => now(),
                     'updated_at'    => now(),
-                    'structureId'   => $category[$i][1],
+                    'structure_id'   => $category[$i][1],
                     'isApproved'    => 1,                               //0 - not approved - 1 - approved
-                    'email'         => "",
+                    'email'         => "leet@hackor.com",
                     'tone'          => 0,
                 ]);
             }       

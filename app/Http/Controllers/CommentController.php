@@ -15,7 +15,7 @@ class CommentController extends Controller{
 
     //rendering all the comments and
     //building the sidebar
-    public function index(){
+    public function __invoke(){
         //all comments
         //$a = new AjaxController();
         //$data['comments'] = $a->all();
@@ -30,16 +30,5 @@ class CommentController extends Controller{
         return view('home.index', $data);
     }
 
-    function isAuth(){
-        //check whether the user is logged in
-        if(Auth::check()  == 1){
-            return 1;
-        }
-        else{
-            return 0;
-        }
-
-
-    }
 
 }

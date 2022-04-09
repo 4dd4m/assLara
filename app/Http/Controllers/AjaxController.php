@@ -95,8 +95,7 @@ class AjaxController extends Controller {
     }
 
     function lastComment(){
-        $c = new Comment();
-        return response()->json($c::last(),200);
+        return response()->json(Comment::lastComment(),200);
     }
 
     function getCommentsByStructureId($id){
@@ -115,6 +114,16 @@ class AjaxController extends Controller {
             $c = new Comment();
             $c->toggleApprove($id);
         }      
-        
     }
+
+    function isAuth(){
+        //check whether the user is logged in
+        if(Auth::check()  == 1){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+
 }

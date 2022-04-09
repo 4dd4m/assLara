@@ -18,7 +18,7 @@ class Sidebar extends Model
 
     public function index(){
         //return all sidebar items
-        $data = DB::table('sructures')->get();
+        $data = DB::table('structures')->get();
         return $data;
     }
 
@@ -29,7 +29,7 @@ class Sidebar extends Model
         $topicCount = [];
 
         $approved = Auth::check() == 0 ? "where isApproved=1" : ""; 
-        $count = DB::select("SELECT structureId as id, COUNT(*) as count FROM laravel.comments $approved group by structureId;");
+        $count = DB::select("SELECT structure_id as id, COUNT(*) as count FROM laravel.comments $approved group by structure_id;");
         
 
 

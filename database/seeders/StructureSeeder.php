@@ -35,7 +35,7 @@ class StructureSeeder extends Seeder
 
 
         for($i = 0; $i <count($data); $i++){
-            DB::table('sructures')->insert([
+            DB::table('structures')->insert([
                 'name' => $data[$i][0],
                 'code' => $data[$i][1],
                 'created_at' => now(),

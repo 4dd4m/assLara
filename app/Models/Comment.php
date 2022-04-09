@@ -1,6 +1,5 @@
 <?php
 namespace App\Models;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,66 +8,60 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['lastName','firstName','comment','tone','email','structureId'];
+    protected $fillable = ['lastName','firstName','comment','tone','email','structure_id'];
 
-
-    //Api Controller redirects here to query
-    //the response goes back to Api Controller
-
-    //get all comments
-    public function index($structureId=""){
-        $data = DB::table('comments')
-            ->join('sructures', 'comments.structureId', '=' ,'sructures.id')
-            ->select('comments.*','sructures.code','sructures.name')
-            ->orderBy('comments.structureId','asc')
+    public function index($strId=""){
+        //get all comments
+        $data = Comment::WithCategory()
+            ->orderBy('structures.id','asc')
             ->orderBy('comments.id','desc');
 
-        if(Auth::check() == 0){
-            $data->where('isApproved',1);
-        }
+        //if not logged in render only approved comment
+        Auth::check() == 0 ? $data->where('isApproved',1) : "";
 
-        if($structureId != ""){
-            $data->where('structureId',$structureId);
-        }
-        $data = $data->get();
-        return $data;
+        //if category id supplied, only include that cat
+        $strId != "" ? $data->where('structure_id',$strId) : "";
+
+        return $data->get();
     }
 
-
-    //show one record
     public function show($id){
-        $data = DB::table('comments')
-            ->join('sructures', 'comments.structureId', '=' ,'sructures.id')
-            ->select('comments.*','sructures.code','sructures.name')
-            ->where('comments.id','=',$id)
-            ->get();
-        return $data;
+        //show one record
+        return Comment::WithCategory()
+            ->where('comments.id','=',$id)->get();
     }
 
-    //get the last record (after new post is created)
     public static function last(){
-
-        $data = DB::table('comments')
-            ->join('sructures', 'comments.structureId', '=' ,'sructures.id')
-            ->select('comments.*','sructures.code','sructures.name')
-            ->orderBy('comments.created_at','desc')
-            ->first();
-        return $data;
+        //get the last record (after new post is created)
+        return Comment::WithCategory()
+                ->orderBy('comments.created_at','desc')
+                ->first()
+                ->get();
     }
 
     public function deleteComment($id){
         //delete a single comment
-        $deleted = Comment::find($id);
-        $deleted->delete();
-        return $deleted ? true : false;
+        return Comment::find($id)->delete();
     }
 
-    function toggleApprove($id){
+    public static function toggleApprove($id){
         //approves a comment Auth check in ajax
-        $oldState = DB::table('comments')->where('id',$id)->get(['isApproved']); 
+        $oldState = Comment::where('id',$id)->get(['isApproved']); 
         $newState = $oldState[0]->isApproved == 1 ? 0 : 1;
-        DB::table('comments')->where('id',$id) 
-                             ->update(['isApproved' => $newState]);
+        Comment::where('id',$id)->update(['isApproved' => $newState]);
+    }
 
+    public static function lastComment(){
+        //return the last updated comment
+        return Comment::latest('updated_at','desc')->first();
+    }
+
+    public function structure(){
+        return $this->belongsTo(Structure::class);
+    }
+
+    public function scopeWithCategory($query){
+        return $query->join('structures', 'comments.structure_id','=','structures.id')
+                     ->select('comments.*','structures.code','structures.name');
     }
 }

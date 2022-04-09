@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email');
-            $table->integer('structureId');
+            $table->integer('structure_id');
             $table->boolean('tone');
             $table->boolean('isApproved')->default(0);
             $table->timestamps();
